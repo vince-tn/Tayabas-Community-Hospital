@@ -1,0 +1,874 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Contact Us | Tayabas Community Hospital, Inc.</title>
+  <meta name="description" content="Contact details of Tayabas Community Hospital, Inc." />
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Lora:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --bg: #f7faf7;
+      --bg-soft: #eef4f0;
+      --surface: #ffffff;
+      --surface-soft: rgba(255,255,255,0.92);
+      --text: #33413b;
+      --muted: #71837b;
+      --heading: #2f403a;
+      --primary: #5b8c7b;
+      --primary-deep: #4c7668;
+      --line: #dde6e0;
+      --shadow: 0 18px 40px rgba(42, 61, 53, 0.08);
+      --radius-xl: 32px;
+      --radius-lg: 22px;
+      --radius-md: 16px;
+      --max: 1180px;
+      --topbar-h: 34px;
+      --nav-h: 82px;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      margin: 0;
+      font-family: 'Lora', serif;
+      background:
+        radial-gradient(circle at left top, rgba(91, 140, 123, 0.08), transparent 24%),
+        linear-gradient(180deg, #fbfcfb 0%, #f5f8f5 100%);
+      color: var(--text);
+    }
+
+    img { max-width: 100%; display: block; }
+    a { color: inherit; text-decoration: none; }
+    button, input, select, textarea { font-family: 'Lora', serif; }
+
+    .container {
+      width: min(calc(100% - 2rem), var(--max));
+      margin: 0 auto;
+    }
+
+    .section {
+      padding: 96px 0;
+      scroll-margin-top: calc(var(--nav-h) + 18px);
+    }
+
+    .section.alt {
+      background: linear-gradient(180deg, rgba(255,255,255,0.52), rgba(238,244,240,0.82));
+    }
+
+    .card {
+      background: var(--surface-soft);
+      border: 1px solid rgba(76, 118, 104, 0.1);
+      border-radius: var(--radius-md);
+      box-shadow: var(--shadow);
+    }
+
+    .kicker {
+      display: inline-flex;
+      align-items: center;
+      min-height: 34px;
+      padding: 0 .9rem;
+      border-radius: 999px;
+      background: rgba(91, 140, 123, 0.10);
+      color: var(--primary-deep);
+      font-size: .73rem;
+      font-weight: 600;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      margin-bottom: 1rem;
+      font-family: 'Lora', serif;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: .55rem;
+      min-height: 48px;
+      padding: 0 1.2rem;
+      border: 1px solid transparent;
+      border-radius: 12px;
+      font-size: .96rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: transform .18s ease, box-shadow .18s ease, border-color .18s ease;
+      font-family: 'Lora', serif;
+    }
+
+    .btn:hover { transform: translateY(-2px); }
+
+    .btn-primary {
+      background: var(--primary);
+      color: #fff;
+      box-shadow: 0 14px 28px rgba(91, 140, 123, 0.24);
+    }
+
+    .btn-secondary {
+      background: rgba(255,255,255,0.92);
+      color: var(--heading);
+      border-color: var(--line);
+    }
+
+    .btn-secondary.light {
+      background: transparent;
+      color: #fff;
+      border-color: rgba(255,255,255,0.7);
+      box-shadow: none;
+    }
+
+    .btn svg {
+      width: 16px;
+      height: 16px;
+    }
+
+    .topbar {
+      min-height: var(--topbar-h);
+      display: flex;
+      align-items: center;
+      background: var(--primary);
+      color: rgba(255,255,255,0.96);
+      font-size: .82rem;
+      font-family: 'Lora', serif;
+    }
+
+    .topbar-row,
+    .topbar-group {
+      display: flex;
+      align-items: center;
+      gap: 1.2rem;
+    }
+
+    .topbar-row {
+      justify-content: space-between;
+      flex-wrap: wrap;
+    }
+
+    .topbar-item {
+      display: inline-flex;
+      align-items: center;
+      gap: .42rem;
+      white-space: nowrap;
+    }
+
+    .topbar-item svg {
+      width: 14px;
+      height: 14px;
+    }
+
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 60;
+      backdrop-filter: blur(12px);
+      background: rgba(251,252,251,0.94);
+      border-bottom: 1px solid rgba(76, 118, 104, 0.08);
+    }
+
+    .nav-wrap {
+      min-height: var(--nav-h);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      position: relative;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: .9rem;
+      min-width: 0;
+    }
+
+    .brand img {
+      width: 56px;
+      height: 56px;
+      object-fit: contain;
+      flex-shrink: 0;
+    }
+
+    .brand-copy strong,
+    .nav-links a,
+    .page-hero h1,
+    .contact-card h3,
+    .contact-main h2,
+    .footer-brand strong,
+    .footer h3,
+    .banner h2,
+    .note-card h3 {
+      margin: 0;
+      font-family: 'Cormorant Garamond', serif;
+      color: var(--heading);
+      letter-spacing: -0.03em;
+      font-weight: 500;
+    }
+
+    .brand-copy strong {
+      display: block;
+      font-size: 1.78rem;
+      line-height: .94;
+    }
+
+    .brand-copy span {
+      display: block;
+      margin-top: .18rem;
+      color: var(--primary-deep);
+      font-size: .68rem;
+      letter-spacing: .16em;
+      text-transform: uppercase;
+      font-weight: 600;
+      font-family: 'Lora', serif;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 1.05rem;
+      flex-wrap: nowrap;
+      white-space: nowrap;
+    }
+
+    .nav-links a {
+      position: relative;
+      padding: .42rem 0;
+      font-size: 1.08rem;
+      line-height: 1;
+      color: var(--heading);
+      letter-spacing: 0;
+    }
+
+    .nav-links a::after {
+      content: '';
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: -.14rem;
+      height: 2px;
+      background: var(--primary);
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform .2s ease;
+    }
+
+    .nav-links a:hover::after,
+    .nav-links a.active::after {
+      transform: scaleX(1);
+    }
+
+    .menu-toggle {
+      display: none;
+      width: 46px;
+      height: 46px;
+      border-radius: 12px;
+      border: 1px solid var(--line);
+      background: #fff;
+      color: var(--primary-deep);
+      cursor: pointer;
+    }
+
+    .page-hero {
+      padding: 84px 0 36px;
+    }
+
+    .crumbs {
+      display: inline-flex;
+      gap: .5rem;
+      color: var(--muted);
+      font-size: .92rem;
+      margin-bottom: 1rem;
+    }
+
+    .page-hero h1 {
+      font-size: clamp(3rem, 5vw, 4.4rem);
+      line-height: .92;
+      max-width: 700px;
+    }
+
+    .page-hero p {
+      max-width: 700px;
+      margin: .9rem 0 0;
+      line-height: 1.8;
+      color: var(--muted);
+    }
+
+    .contact-layout {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+      gap: 1.2rem;
+      align-items: start;
+    }
+
+    .contact-main {
+      padding: 1.5rem;
+    }
+
+    .contact-main h2 {
+      font-size: 2.5rem;
+      line-height: .95;
+      margin-bottom: .8rem;
+    }
+
+    .contact-main p {
+      margin: 0;
+      color: var(--muted);
+      line-height: 1.8;
+    }
+
+    .contact-highlights {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0,1fr));
+      gap: 1rem;
+      margin-top: 1.5rem;
+    }
+
+    .highlight-box {
+      padding: 1rem;
+      border-radius: 16px;
+      background: rgba(91,140,123,0.08);
+      border: 1px solid rgba(76, 118, 104, 0.08);
+      display: grid;
+      gap: .5rem;
+      min-width: 0;
+    }
+
+    .highlight-box svg {
+      width: 24px;
+      height: 24px;
+      color: var(--primary-deep);
+    }
+
+    .highlight-box strong {
+      color: var(--heading);
+      font-weight: 600;
+      display: block;
+    }
+
+    .highlight-box span {
+      color: var(--muted);
+      line-height: 1.7;
+      font-size: .96rem;
+      overflow-wrap: anywhere;
+      word-break: break-word;
+    }
+
+    .contact-highlights .highlight-box:last-child {
+      grid-column: 1 / -1;
+    }
+
+    .contact-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: .85rem;
+      margin-top: 1.5rem;
+    }
+
+    .department-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1rem;
+      align-items: start;
+    }
+
+    .contact-card {
+      padding: 1.25rem;
+    }
+
+    .contact-card h3 {
+      font-size: 1.75rem;
+      line-height: .95;
+      margin-bottom: .8rem;
+    }
+
+    .contact-list {
+      margin: 0;
+      padding: 0;
+      list-style: none;
+      display: grid;
+      gap: .8rem;
+    }
+
+    .contact-list li {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) auto;
+      gap: .9rem;
+      align-items: start;
+      padding-bottom: .75rem;
+      border-bottom: 1px solid var(--line);
+      color: var(--muted);
+      line-height: 1.7;
+    }
+
+    .contact-list li:last-child {
+      border-bottom: 0;
+      padding-bottom: 0;
+    }
+
+    .contact-list span {
+      color: var(--heading);
+      font-weight: 600;
+      min-width: 0;
+    }
+
+    .contact-list li div {
+      text-align: right;
+      white-space: nowrap;
+    }
+
+    .note-card {
+      padding: 1.25rem 1.35rem;
+      margin-top: 1.2rem;
+    }
+
+    .note-card h3 {
+      font-size: 1.9rem;
+      line-height: .95;
+      margin-bottom: .6rem;
+    }
+
+    .note-card p {
+      margin: 0;
+      color: var(--muted);
+      line-height: 1.8;
+    }
+
+    .banner {
+      padding: 92px 0;
+      background: var(--primary);
+      color: rgba(255,255,255,.95);
+    }
+
+    .banner-inner {
+      max-width: 920px;
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    .banner h2 {
+      color: #fff;
+      font-size: clamp(3rem, 5vw, 4.6rem);
+      line-height: .98;
+    }
+
+    .banner p {
+      margin: 1rem auto 0;
+      max-width: 760px;
+      color: rgba(255,255,255,.92);
+      line-height: 1.8;
+      font-size: 1.02rem;
+    }
+
+    .banner .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: .85rem;
+      margin-top: 1.6rem;
+    }
+
+    .footer {
+      background: linear-gradient(180deg, #30473f, #263932);
+      color: rgba(255,255,255,.9);
+      padding: 58px 0 24px;
+      font-family: 'Lora', serif;
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 1.15fr .8fr .95fr;
+      gap: 2rem;
+      padding-bottom: 2rem;
+      border-bottom: 1px solid rgba(255,255,255,.12);
+    }
+
+    .footer-brand {
+      display: flex;
+      align-items: start;
+      gap: 1rem;
+    }
+
+    .footer-brand img {
+      width: 54px;
+      height: 54px;
+      object-fit: contain;
+    }
+
+    .footer-brand strong {
+      color: #fff;
+      display: block;
+      font-size: 1.55rem;
+      line-height: .96;
+      margin-bottom: .45rem;
+    }
+
+    .footer h3 {
+      margin: 0 0 .8rem;
+      font-size: 1.3rem;
+      color: #fff;
+    }
+
+    .footer ul {
+      margin: 0;
+      padding: 0;
+      list-style: none;
+      display: grid;
+      gap: .45rem;
+    }
+
+    .footer p,
+    .footer li {
+      color: rgba(255,255,255,.74);
+      line-height: 1.75;
+    }
+
+    .footer-bottom {
+      padding-top: 1.1rem;
+      text-align: center;
+      color: rgba(255,255,255,.68);
+      font-size: .9rem;
+      font-family: 'Lora', serif;
+    }
+
+    @media (max-width: 1120px) {
+      .contact-layout,
+      .footer-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .contact-highlights,
+      .department-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .contact-highlights .highlight-box:last-child {
+        grid-column: auto;
+      }
+    }
+
+    @media (max-width: 980px) {
+      .brand-copy strong {
+        font-size: 1.45rem;
+      }
+
+      .brand-copy span {
+        font-size: .65rem;
+      }
+
+      .menu-toggle {
+        display: inline-grid;
+        place-items: center;
+      }
+
+      .nav-links {
+        position: absolute;
+        left: 0;
+        right: 0;
+        top: calc(100% + .7rem);
+        display: none;
+        flex-direction: column;
+        align-items: stretch;
+        gap: .15rem;
+        padding: .85rem;
+        background: rgba(255,255,255,.98);
+        border: 1px solid var(--line);
+        border-radius: 18px;
+        box-shadow: var(--shadow);
+      }
+
+      .nav-links.open {
+        display: flex;
+      }
+
+      .nav-links a {
+        font-size: 1.15rem;
+      }
+
+      .page-hero h1 {
+        font-size: clamp(2.8rem, 8vw, 3.8rem);
+      }
+    }
+
+    @media (max-width: 760px) {
+      :root {
+        --topbar-h: auto;
+        --nav-h: 74px;
+      }
+
+      .topbar {
+        padding: .45rem 0;
+      }
+
+      .topbar-row,
+      .topbar-group {
+        justify-content: center;
+      }
+
+      .section {
+        padding: 76px 0;
+      }
+
+      .page-hero {
+        padding: 56px 0 32px;
+      }
+
+      .contact-actions,
+      .banner .hero-actions {
+        flex-direction: column;
+        align-items: stretch;
+      }
+
+      .contact-list li {
+        grid-template-columns: 1fr;
+        gap: .25rem;
+      }
+
+      .contact-list li div {
+        text-align: left;
+        white-space: normal;
+      }
+
+      .banner h2 {
+        font-size: 2.6rem;
+      }
+
+      .container {
+        width: min(calc(100% - 1.2rem), var(--max));
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="topbar">
+    <div class="container topbar-row">
+      <div class="topbar-group">
+        <span class="topbar-item">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.79 19.79 0 0 1 2.11 4.18 2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.12.89.33 1.76.62 2.6a2 2 0 0 1-.45 2.11L8 9.91a16 16 0 0 0 6.09 6.09l1.48-1.28a2 2 0 0 1 2.11-.45c.84.29 1.71.5 2.6.62A2 2 0 0 1 22 16.92z"/>
+          </svg>
+          (042) 793-2216
+        </span>
+        <span class="topbar-item">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="m4 6 8 6 8-6"/>
+            <rect x="3" y="5" width="18" height="14" rx="2"/>
+          </svg>
+          administrative@tayabascommunityhospital.com
+        </span>
+      </div>
+      <div class="topbar-group">
+        <span class="topbar-item">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M12 21s-6-5.33-6-11a6 6 0 1 1 12 0c0 5.67-6 11-6 11Z"/>
+            <circle cx="12" cy="10" r="2.5"/>
+          </svg>
+          Brgy. Wakas, Tayabas, Quezon, Philippines
+        </span>
+      </div>
+    </div>
+  </div>
+
+  <header class="site-header">
+    <div class="container nav-wrap">
+      <a class="brand" href="index.html#home" aria-label="Tayabas Community Hospital homepage">
+        <img src="assets/logo.png" alt="Tayabas Community Hospital logo" />
+        <div class="brand-copy">
+          <strong>Tayabas Community</strong>
+          <span>Hospital, Inc.</span>
+        </div>
+      </a>
+
+      <button class="menu-toggle" id="menuToggle" aria-expanded="false" aria-controls="primaryNav" aria-label="Toggle navigation">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+          <path d="M4 7h16M4 12h16M4 17h16" />
+        </svg>
+      </button>
+
+      <nav class="nav-links" id="primaryNav">
+        <a href="index.html#home">Home</a>
+        <a href="index.html#about">About Us</a>
+        <a href="index.html#services">Services</a>
+        <a href="index.html#faqs">FAQs</a>
+        <a href="hmo.html">HMO</a>
+        <a href="doctors.html">Doctor's Directory</a>
+        <a href="contact.html" class="active">Contact Us</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="page-hero">
+      <div class="container">
+        <div class="crumbs"><a href="index.html">Home</a> / <span>Contact Us</span></div>
+        <div class="kicker">Hospital Contact Details</div>
+        <h1>Contact Us</h1>
+        <p>
+          Reach the hospital through the main landline and email below, or use the listed department numbers for specific inquiries.
+        </p>
+      </div>
+    </section>
+
+    <section class="section alt">
+      <div class="container">
+        <div class="contact-layout">
+          <div>
+            <article class="contact-main card">
+              <div class="kicker">Main Contact</div>
+              <h2>We're here to help</h2>
+              <p>
+                For general concerns, appointment-related questions, or department-specific guidance, use the hospital’s main contact channels first.
+              </p>
+
+              <div class="contact-highlights">
+                <div class="highlight-box">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.79 19.79 0 0 1 2.11 4.18 2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.12.89.33 1.76.62 2.6a2 2 0 0 1-.45 2.11L8 9.91a16 16 0 0 0 6.09 6.09l1.48-1.28a2 2 0 0 1 2.11-.45c.84.29 1.71.5 2.6.62A2 2 0 0 1 22 16.92z"/>
+                  </svg>
+                  <div>
+                    <strong>Landline</strong>
+                    <span>(042) 793-2216</span>
+                  </div>
+                </div>
+
+                <div class="highlight-box">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="m4 6 8 6 8-6"/>
+                    <rect x="3" y="5" width="18" height="14" rx="2"/>
+                  </svg>
+                  <div>
+                    <strong>Email Address</strong>
+                    <span>administrative@tayabascommunityhospital.com</span>
+                  </div>
+                </div>
+
+                <div class="highlight-box">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M12 21s-6-5.33-6-11a6 6 0 1 1 12 0c0 5.67-6 11-6 11Z"/>
+                    <circle cx="12" cy="10" r="2.5"/>
+                  </svg>
+                  <div>
+                    <strong>Location</strong>
+                    <span>Brgy. Wakas, Tayabas, Quezon, Philippines</span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="contact-actions">
+                <a class="btn btn-primary" href="tel:+63427932216">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.79 19.79 0 0 1 2.11 4.18 2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.12.89.33 1.76.62 2.6a2 2 0 0 1-.45 2.11L8 9.91a16 16 0 0 0 6.09 6.09l1.48-1.28a2 2 0 0 1 2.11-.45c.84.29 1.71.5 2.6.62A2 2 0 0 1 22 16.92z"/>
+                  </svg>
+                  Call Hospital
+                </a>
+
+                <a class="btn btn-secondary" href="mailto:administrative@tayabascommunityhospital.com">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="m4 6 8 6 8-6"/>
+                    <rect x="3" y="5" width="18" height="14" rx="2"/>
+                  </svg>
+                  Send Email
+                </a>
+              </div>
+            </article>
+
+            <article class="note-card card">
+              <h3>Important note</h3>
+              <p>
+                Some department numbers in the draft are still shown as placeholders. This page keeps them as provided, so they can be updated later once official mobile numbers are confirmed.
+              </p>
+            </article>
+          </div>
+
+          <div class="department-grid">
+            <article class="contact-card card">
+              <h3>Department Numbers</h3>
+              <ul class="contact-list">
+                <li><span>ER</span><div>09xx xxxxxxx</div></li>
+                <li><span>Admitting</span><div>09xx xxxxxxx</div></li>
+                <li><span>Laboratory</span><div>09xx xxxxxxx</div></li>
+              </ul>
+            </article>
+
+            <article class="contact-card card">
+              <h3>More Lines</h3>
+              <ul class="contact-list">
+                <li><span>Diagnostic Imaging</span><div>09xx xxxxxxx</div></li>
+                <li><span>Hemodialysis</span><div>09xx xxxxxxx</div></li>
+                <li><span>Medical Arts Building</span><div>09xx xxxxxxx</div></li>
+              </ul>
+            </article>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="banner">
+      <div class="container banner-inner">
+        <h2>Need help before your visit?</h2>
+        <p>
+          Contact the hospital for directions, department inquiries, and general assistance before coming in.
+        </p>
+        <div class="hero-actions">
+          <a class="btn btn-secondary" href="tel:+63427932216">Call Us Now</a>
+          <a class="btn btn-secondary light" href="mailto:administrative@tayabascommunityhospital.com">Email Us</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <img src="assets/logo.png" alt="Tayabas Community Hospital logo" />
+          <div>
+            <strong>Tayabas Community Hospital, Inc.</strong>
+            <p>Dedicated to serving the community through accessible health care, compassionate support, and a patient-centered online experience.</p>
+          </div>
+        </div>
+
+        <div>
+          <h3>Quick Links</h3>
+          <ul>
+            <li><a href="index.html#about">About Us</a></li>
+            <li><a href="index.html#services">Services</a></li>
+            <li><a href="doctors.html">Doctor's Directory</a></li>
+            <li><a href="contact.html">Contact Us</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h3>Contact</h3>
+          <ul>
+            <li>Brgy. Wakas, Tayabas, Quezon</li>
+            <li>(042) 793-2216</li>
+            <li>administrative@tayabascommunityhospital.com</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-bottom">© 2026 Tayabas Community Hospital, Inc. All rights reserved.</div>
+    </div>
+  </footer>
+
+  <script>
+    const menuToggle = document.getElementById('menuToggle');
+    const primaryNav = document.getElementById('primaryNav');
+
+    menuToggle?.addEventListener('click', () => {
+      const isOpen = primaryNav.classList.toggle('open');
+      menuToggle.setAttribute('aria-expanded', String(isOpen));
+    });
+
+    primaryNav?.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => {
+        primaryNav.classList.remove('open');
+        menuToggle?.setAttribute('aria-expanded', 'false');
+      });
+    });
+  </script>
+</body>
+</html>

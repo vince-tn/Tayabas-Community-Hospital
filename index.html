@@ -1,0 +1,1423 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Tayabas Community Hospital, Inc.</title>
+  <meta name="description" content="Tayabas Community Hospital website" />
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Lora:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="icon" type="image/png" href="assets/logo.png">
+  <style>
+    :root {
+      --bg: #f7faf7;
+      --bg-soft: #eef4f0;
+      --surface: #ffffff;
+      --surface-soft: rgba(255,255,255,0.92);
+      --text: #33413b;
+      --muted: #71837b;
+      --heading: #2f403a;
+      --primary: #5b8c7b;
+      --primary-deep: #4c7668;
+      --line: #dde6e0;
+      --shadow: 0 18px 40px rgba(42, 61, 53, 0.08);
+      --radius-xl: 32px;
+      --radius-lg: 22px;
+      --radius-md: 16px;
+      --max: 1180px;
+      --topbar-h: 34px;
+      --nav-h: 82px;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      margin: 0;
+      font-family: 'Lora', serif;
+      background:
+        radial-gradient(circle at left top, rgba(91, 140, 123, 0.08), transparent 24%),
+        linear-gradient(180deg, #fbfcfb 0%, #f5f8f5 100%);
+      color: var(--text);
+    }
+
+    img { max-width: 100%; display: block; }
+    a { color: inherit; text-decoration: none; }
+    button, input, select, textarea { font-family: 'Lora', serif; }
+
+    .container {
+      width: min(calc(100% - 2rem), var(--max));
+      margin: 0 auto;
+    }
+
+    .section {
+      padding: 96px 0;
+      scroll-margin-top: calc(var(--nav-h) + 18px);
+    }
+
+    .section.alt {
+      background: linear-gradient(180deg, rgba(255,255,255,0.52), rgba(238,244,240,0.82));
+    }
+
+    .section-head {
+      margin-bottom: 2.2rem;
+    }
+
+    .section-head.center {
+      text-align: center;
+    }
+
+    .section-head.center p {
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .section-head h2,
+    .hero-title,
+    .hero-sub,
+    .banner h2,
+    .footer-brand strong,
+    .brand-copy strong,
+    .nav-links a,
+    .feature-card h3,
+    .service-card h3,
+    .thumb-label,
+    .body h3,
+    .footer h3 {
+      margin: 0;
+      font-family: 'Cormorant Garamond', serif;
+      color: var(--heading);
+      letter-spacing: -0.03em;
+      font-weight: 500;
+    }
+
+    .section-head h2 {
+      font-size: clamp(2.8rem, 4.4vw, 4.25rem);
+      line-height: 0.98;
+    }
+
+    .section-head p {
+      margin: .7rem 0 0;
+      max-width: 650px;
+      color: var(--muted);
+      line-height: 1.8;
+      font-size: 1rem;
+      font-family: 'Lora', serif;
+    }
+
+    .section-row {
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      gap: 1rem;
+      margin-bottom: 2rem;
+    }
+
+    .kicker {
+      display: inline-flex;
+      align-items: center;
+      min-height: 34px;
+      padding: 0 .9rem;
+      border-radius: 999px;
+      background: rgba(91, 140, 123, 0.10);
+      color: var(--primary-deep);
+      font-size: .73rem;
+      font-weight: 600;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      margin-bottom: 1rem;
+      font-family: 'Lora', serif;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: .55rem;
+      min-height: 48px;
+      padding: 0 1.2rem;
+      border: 1px solid transparent;
+      border-radius: 12px;
+      font-size: .96rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: transform .18s ease, box-shadow .18s ease, border-color .18s ease;
+      font-family: 'Lora', serif;
+    }
+
+    .btn:hover {
+      transform: translateY(-2px);
+    }
+
+    .btn-primary {
+      background: var(--primary);
+      color: #fff;
+      box-shadow: 0 14px 28px rgba(91, 140, 123, 0.24);
+    }
+
+    .btn-secondary {
+      background: rgba(255,255,255,0.92);
+      color: var(--heading);
+      border-color: var(--line);
+    }
+
+    .btn-secondary.light {
+      background: transparent;
+      color: #fff;
+      border-color: rgba(255,255,255,0.7);
+      box-shadow: none;
+    }
+
+    .btn svg {
+      width: 16px;
+      height: 16px;
+    }
+
+    .card {
+      background: var(--surface-soft);
+      border: 1px solid rgba(76, 118, 104, 0.1);
+      border-radius: var(--radius-md);
+      box-shadow: var(--shadow);
+    }
+
+    .topbar {
+      min-height: var(--topbar-h);
+      display: flex;
+      align-items: center;
+      background: var(--primary);
+      color: rgba(255,255,255,0.96);
+      font-size: .82rem;
+      font-family: 'Lora', serif;
+    }
+
+    .topbar-row,
+    .topbar-group {
+      display: flex;
+      align-items: center;
+      gap: 1.2rem;
+    }
+
+    .topbar-row {
+      justify-content: space-between;
+      flex-wrap: wrap;
+    }
+
+    .topbar-item {
+      display: inline-flex;
+      align-items: center;
+      gap: .42rem;
+      white-space: nowrap;
+    }
+
+    .topbar-item svg {
+      width: 14px;
+      height: 14px;
+    }
+
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 60;
+      backdrop-filter: blur(12px);
+      background: rgba(251,252,251,0.94);
+      border-bottom: 1px solid rgba(76, 118, 104, 0.08);
+    }
+
+    .nav-wrap {
+      min-height: var(--nav-h);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      position: relative;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: .9rem;
+      min-width: 0;
+    }
+
+    .brand img {
+      width: 56px;
+      height: 56px;
+      object-fit: contain;
+      flex-shrink: 0;
+    }
+
+    .brand-copy strong {
+      display: block;
+      font-size: 1.78rem;
+      line-height: .94;
+    }
+
+    .brand-copy span {
+      display: block;
+      margin-top: .18rem;
+      color: var(--primary-deep);
+      font-size: .68rem;
+      letter-spacing: .16em;
+      text-transform: uppercase;
+      font-weight: 600;
+      font-family: 'Lora', serif;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 1.05rem;
+      flex-wrap: nowrap;
+      white-space: nowrap;
+    }
+
+    .nav-links a {
+      position: relative;
+      padding: .42rem 0;
+      font-size: 1.08rem;
+      line-height: 1;
+      color: var(--heading);
+      letter-spacing: 0;
+    }
+
+    .nav-links a::after {
+      content: '';
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: -.14rem;
+      height: 2px;
+      background: var(--primary);
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform .2s ease;
+    }
+
+    .nav-links a:hover::after,
+    .nav-links a.active::after {
+      transform: scaleX(1);
+    }
+
+    .menu-toggle {
+      display: none;
+      width: 46px;
+      height: 46px;
+      border-radius: 12px;
+      border: 1px solid var(--line);
+      background: #fff;
+      color: var(--primary-deep);
+      cursor: pointer;
+    }
+
+    .hero {
+      padding: 84px 0 96px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image: radial-gradient(circle, rgba(91,140,123,.12) 1px, transparent 1px);
+      background-size: 30px 30px;
+      opacity: .14;
+      pointer-events: none;
+    }
+
+    .hero-grid {
+      position: relative;
+      z-index: 1;
+      display: grid;
+      grid-template-columns: minmax(0, .88fr) minmax(0, 1.12fr);
+      gap: 4rem;
+      align-items: center;
+    }
+
+    .hero-copy {
+      max-width: 450px;
+    }
+
+    .hero-title {
+      font-size: clamp(3.4rem, 5.8vw, 5rem);
+      line-height: 0.84;
+      max-width: 520px;
+      letter-spacing: -0.04em;
+    }
+
+    .hero-title span {
+      display: block;
+      color: var(--primary);
+      margin-top: -0.08em;
+    }
+
+    .hero-sub {
+      margin: 1rem 0 0;
+      max-width: 500px;
+      font-size: 1rem;
+      line-height: 1.8;
+      font-style: normal;
+      color: var(--muted);
+      font-family: 'Lora', serif;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: .85rem;
+      margin-top: 1.75rem;
+    }
+
+    .hero-stats {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 1.2rem;
+      margin-top: 2.3rem;
+      padding-top: 1.5rem;
+      border-top: 1px solid var(--line);
+      max-width: 520px;
+    }
+
+    .stat strong {
+      display: block;
+      font-size: 1.02rem;
+      color: var(--primary-deep);
+      margin-bottom: .22rem;
+      font-weight: 600;
+      font-family: 'Lora', serif;
+    }
+
+    .stat span {
+      display: block;
+      font-size: .92rem;
+      line-height: 1.58;
+      color: var(--muted);
+      font-family: 'Lora', serif;
+    }
+
+    .hero-media {
+      position: relative;
+      min-height: 520px;
+      border-radius: 34px;
+      overflow: hidden;
+      box-shadow: var(--shadow);
+      background: #dde6e0;
+    }
+
+    .hero-media img {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .hero-media::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, rgba(21,38,33,0.02) 35%, rgba(21,38,33,.12) 100%);
+    }
+
+    .about-features {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0,1fr));
+      gap: 1rem;
+      margin-top: 2.4rem;
+      margin-bottom: 3rem;
+    }
+
+    .feature-card {
+      text-align: center;
+      padding: 1.6rem 1.2rem 1.4rem;
+      background: transparent;
+      border: 0;
+      box-shadow: none;
+    }
+
+    .feature-icon {
+      width: 82px;
+      height: 82px;
+      margin: 0 auto 1.1rem;
+      border-radius: 22px;
+      display: grid;
+      place-items: center;
+      background: rgba(91, 140, 123, 0.10);
+      color: var(--primary-deep);
+    }
+
+    .feature-icon svg {
+      width: 34px;
+      height: 34px;
+    }
+
+    .feature-card h3 {
+      margin: 0 0 .45rem;
+      font-size: 1.95rem;
+      line-height: 1;
+    }
+
+    .feature-card p {
+      margin: 0 auto;
+      max-width: 290px;
+      color: var(--muted);
+      line-height: 1.8;
+      font-size: 1rem;
+      font-family: 'Lora', serif;
+    }
+
+    .about-story {
+      display: grid;
+      grid-template-columns: minmax(0,1.08fr) minmax(0,.92fr);
+      gap: 2rem;
+      align-items: center;
+      margin-top: 1rem;
+    }
+
+    .about-text p {
+      margin: 0;
+      color: var(--muted);
+      line-height: 1.9;
+      font-size: 1rem;
+      font-family: 'Lora', serif;
+    }
+
+    .about-text p + p {
+      margin-top: 1rem;
+    }
+
+    .about-mini-title {
+      margin: 0 0 1rem;
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 3rem;
+      line-height: 1;
+      color: var(--heading);
+      font-weight: 600;
+    }
+
+    .about-values {
+      margin-top: 1.8rem;
+      display: flex;
+      flex-wrap: wrap;
+      gap: .6rem;
+    }
+
+    .value-pill {
+      display: inline-flex;
+      align-items: center;
+      min-height: 38px;
+      padding: 0 .9rem;
+      border-radius: 999px;
+      background: rgba(91,140,123,0.1);
+      color: var(--primary-deep);
+      font-size: .9rem;
+      font-weight: 600;
+      font-family: 'Lora', serif;
+    }
+
+    .about-image {
+      position: relative;
+      border-radius: 26px;
+      overflow: hidden;
+      min-height: 420px;
+      background: #dce5df;
+      box-shadow: var(--shadow);
+    }
+
+    .about-image img {
+      width: 100%;
+      height: 100%;
+      min-height: 420px;
+      object-fit: cover;
+    }
+
+    .services-intro h2 {
+      font-size: clamp(2.6rem, 4vw, 4rem);
+    }
+
+    .services-intro p {
+      max-width: 540px;
+      font-family: 'Lora', serif;
+    }
+
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0,1fr));
+      gap: 1.2rem;
+    }
+
+    .services-extra-grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0,1fr));
+      gap: 1rem;
+      margin-top: 1rem;
+    }
+
+    .service-pill-card {
+      min-height: 92px;
+      border-radius: 18px;
+      background: rgba(255,255,255,0.92);
+      border: 1px solid rgba(76, 118, 104, 0.1);
+      box-shadow: var(--shadow);
+      display: grid;
+      place-items: center;
+      padding: 1rem;
+      text-align: center;
+    }
+
+    .service-pill-card h3 {
+      margin: 0;
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.55rem;
+      font-weight: 500;
+      line-height: 1;
+      color: var(--heading);
+    }
+
+    .heart-station-card {
+      margin-top: 1.2rem;
+      padding: 1.5rem 1.6rem;
+      border-radius: 22px;
+      background: linear-gradient(180deg, #5b8c7b, #4c7668);
+      color: #fff;
+      box-shadow: var(--shadow);
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) auto;
+      gap: 1.5rem;
+      align-items: center;
+    }
+
+    .heart-station-label {
+      display: inline-flex;
+      align-items: center;
+      min-height: 32px;
+      padding: 0 .8rem;
+      border-radius: 999px;
+      background: rgba(255,255,255,0.16);
+      color: #fff;
+      font-size: .78rem;
+      font-weight: 600;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      font-family: 'Lora', serif;
+      margin-bottom: .85rem;
+    }
+
+    .heart-station-copy h3 {
+      margin: 0 0 .35rem;
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 2rem;
+      font-weight: 500;
+      color: #fff;
+    }
+
+    .heart-station-copy p {
+      margin: 0;
+      color: rgba(255,255,255,0.88);
+      line-height: 1.7;
+      font-family: 'Lora', serif;
+    }
+
+    .heart-station-list {
+      margin: 0;
+      padding-left: 1.1rem;
+      display: grid;
+      gap: .35rem;
+      color: #fff;
+      font-family: 'Lora', serif;
+    }
+
+    .heart-station-list li {
+      line-height: 1.7;
+    }
+    .service-card {
+      overflow: hidden;
+      border-radius: 22px;
+      box-shadow: var(--shadow);
+      background: #dde6e0;
+      min-height: 275px;
+      position: relative;
+    }
+
+    .service-card img {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform .3s ease;
+    }
+
+    .service-card:hover img {
+      transform: scale(1.04);
+    }
+
+    .service-card::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, rgba(20,34,30,0) 30%, rgba(20,34,30,.65) 100%);
+    }
+
+    .service-card h3 {
+      position: absolute;
+      left: 1.2rem;
+      right: 1.2rem;
+      bottom: 1.15rem;
+      z-index: 1;
+      color: #fff;
+      font-size: 2rem;
+      line-height: .95;
+      text-shadow: 0 8px 22px rgba(0,0,0,.22);
+    }
+
+    .services-note {
+      margin-top: 1.2rem;
+      color: var(--muted);
+      line-height: 1.8;
+      font-size: .98rem;
+      font-family: 'Lora', serif;
+    }
+
+    .services-note strong {
+      color: var(--heading);
+      font-weight: 600;
+    }
+
+    .banner {
+      padding: 92px 0;
+      background: var(--primary);
+      color: rgba(255,255,255,.95);
+    }
+
+    .banner-inner {
+      max-width: 980px;
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    .banner h2 {
+      color: #fff;
+      font-size: clamp(3rem, 5vw, 4.6rem);
+      line-height: .98;
+    }
+
+    .banner p {
+      margin: 1rem auto 0;
+      max-width: 760px;
+      color: rgba(255,255,255,.92);
+      line-height: 1.8;
+      font-size: 1.02rem;
+      font-family: 'Lora', serif;
+    }
+
+    .banner .hero-actions {
+      justify-content: center;
+      margin-top: 1.6rem;
+    }
+
+    .grid-3 {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0,1fr));
+      gap: 1rem;
+    }
+
+    .news-card,
+    .event-card {
+      overflow: hidden;
+      border-radius: 18px;
+      background: var(--surface-soft);
+      border: 1px solid rgba(76, 118, 104, 0.1);
+      box-shadow: var(--shadow);
+    }
+
+    .thumb {
+      position: relative;
+      aspect-ratio: 1.2 / .9;
+      background: #dde6e0;
+      overflow: hidden;
+    }
+
+    .thumb img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform .3s ease;
+    }
+
+    .news-card:hover .thumb img,
+    .event-card:hover .thumb img {
+      transform: scale(1.04);
+    }
+
+    .thumb::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, rgba(20,34,30,0) 35%, rgba(20,34,30,.6) 100%);
+    }
+
+    .thumb-label {
+      position: absolute;
+      left: 1rem;
+      right: 1rem;
+      bottom: .95rem;
+      z-index: 1;
+      color: #fff;
+      font-size: 1.35rem;
+      line-height: 1.12;
+    }
+
+    .body {
+      padding: 1.1rem 1.15rem 1.2rem;
+    }
+
+    .body h3 {
+      margin: 0 0 .48rem;
+      font-size: 1.08rem;
+      font-weight: 600;
+      color: var(--heading);
+    }
+
+    .body p,
+    .faq-answer p,
+    .footer p,
+    .footer li {
+      margin: 0;
+      line-height: 1.75;
+      color: var(--muted);
+      font-family: 'Lora', serif;
+    }
+
+    .faq-wrap {
+      display: grid;
+      gap: .85rem;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    .faq-item {
+      overflow: hidden;
+      border-radius: 16px;
+      background: var(--surface-soft);
+      border: 1px solid rgba(76, 118, 104, 0.1);
+      box-shadow: var(--shadow);
+    }
+
+    .faq-button {
+      width: 100%;
+      border: 0;
+      background: transparent;
+      padding: 1.1rem 1.2rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      text-align: left;
+      font-weight: 600;
+      color: var(--heading);
+      cursor: pointer;
+      font-family: 'Lora', serif;
+    }
+
+    .faq-answer {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height .28s ease;
+    }
+
+    .faq-answer-inner {
+      padding: 0 1.2rem 1.2rem;
+    }
+
+    .faq-icon {
+      font-size: 1.4rem;
+      color: var(--primary);
+      transition: transform .2s ease;
+      font-family: 'Cormorant Garamond', serif;
+    }
+
+    .faq-item.active .faq-icon {
+      transform: rotate(45deg);
+    }
+
+    .footer {
+      background: linear-gradient(180deg, #30473f, #263932);
+      color: rgba(255,255,255,.9);
+      padding: 58px 0 24px;
+      font-family: 'Lora', serif;
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 1.15fr .8fr .95fr;
+      gap: 2rem;
+      padding-bottom: 2rem;
+      border-bottom: 1px solid rgba(255,255,255,.12);
+    }
+
+    .footer-brand {
+      display: flex;
+      align-items: start;
+      gap: 1rem;
+    }
+
+    .footer-brand img {
+      width: 54px;
+      height: 54px;
+      object-fit: contain;
+    }
+
+    .footer-brand strong {
+      color: #fff;
+      display: block;
+      font-size: 1.55rem;
+      line-height: .96;
+      margin-bottom: .45rem;
+    }
+
+    .footer h3 {
+      margin: 0 0 .8rem;
+      font-size: 1.3rem;
+      color: #fff;
+    }
+
+    .footer ul {
+      margin: 0;
+      padding: 0;
+      list-style: none;
+      display: grid;
+      gap: .45rem;
+    }
+
+    .footer p,
+    .footer li {
+      color: rgba(255,255,255,.74);
+    }
+
+    .footer-bottom {
+      padding-top: 1.1rem;
+      text-align: center;
+      color: rgba(255,255,255,.68);
+      font-size: .9rem;
+      font-family: 'Lora', serif;
+    }
+
+    @media (max-width: 1120px) {
+      .hero-grid,
+      .about-story,
+      .services-grid,
+      .services-extra-grid,
+      .grid-3,
+      .footer-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .about-features {
+        grid-template-columns: 1fr;
+      }
+
+      .hero-media,
+      .about-image {
+        min-height: 420px;
+      }
+
+      .about-image img {
+        min-height: 420px;
+      }
+
+      .hero-copy {
+        max-width: 100%;
+      }
+    }
+
+    @media (max-width: 980px) {
+      .brand-copy strong {
+        font-size: 1.45rem;
+      }
+
+      .brand-copy span {
+        font-size: .65rem;
+      }
+
+      .menu-toggle {
+        display: inline-grid;
+        place-items: center;
+      }
+
+      .nav-links {
+        position: absolute;
+        left: 0;
+        right: 0;
+        top: calc(100% + .7rem);
+        display: none;
+        flex-direction: column;
+        align-items: stretch;
+        gap: .15rem;
+        padding: .85rem;
+        background: rgba(255,255,255,.98);
+        border: 1px solid var(--line);
+        border-radius: 18px;
+        box-shadow: var(--shadow);
+      }
+
+      .nav-links.open {
+        display: flex;
+      }
+
+      .hero-title {
+        font-size: clamp(2.7rem, 8vw, 3.7rem);
+      }
+
+      .nav-links a {
+        font-size: 1.15rem;
+      }
+    }
+
+    @media (max-width: 760px) {
+      :root {
+        --topbar-h: auto;
+        --nav-h: 74px;
+      }
+
+      .topbar {
+        padding: .45rem 0;
+      }
+
+      .topbar-row,
+      .topbar-group {
+        justify-content: center;
+      }
+
+      .section {
+        padding: 76px 0;
+      }
+
+      .hero {
+        padding: 52px 0 76px;
+      }
+
+      .hero-actions {
+        flex-direction: column;
+        align-items: stretch;
+      }
+
+      .hero-stats,
+      .services-grid,
+      .services-extra-grid {
+        grid-template-columns: 1fr;
+      }
+      
+      .heart-station-card {
+        grid-template-columns: 1fr;
+      }
+      .hero-media {
+        min-height: 420px;
+      }
+
+      .banner h2 {
+        font-size: 2.6rem;
+      }
+
+      .container {
+        width: min(calc(100% - 1.2rem), var(--max));
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="topbar">
+    <div class="container topbar-row">
+      <div class="topbar-group">
+        <span class="topbar-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.79 19.79 0 0 1 2.11 4.18 2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.12.89.33 1.76.62 2.6a2 2 0 0 1-.45 2.11L8 9.91a16 16 0 0 0 6.09 6.09l1.48-1.28a2 2 0 0 1 2.11-.45c.84.29 1.71.5 2.6.62A2 2 0 0 1 22 16.92z"/></svg>(042) 793-2216</span>
+        <span class="topbar-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m4 6 8 6 8-6"/><rect x="3" y="5" width="18" height="14" rx="2"/></svg>administrative@tayabascommunityhospital.com</span>
+      </div>
+      <div class="topbar-group">
+        <span class="topbar-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 21s-6-5.33-6-11a6 6 0 1 1 12 0c0 5.67-6 11-6 11Z"/><circle cx="12" cy="10" r="2.5"/></svg>Brgy. Wakas, Tayabas, Quezon, Philippines</span>
+      </div>
+    </div>
+  </div>
+
+  <header class="site-header">
+    <div class="container nav-wrap">
+      <a class="brand" href="index.html#home" aria-label="Tayabas Community Hospital homepage">
+        <img src="assets/logo.png" alt="Tayabas Community Hospital logo" />
+        <div class="brand-copy">
+          <strong>Tayabas Community Hospital, Inc.</strong>
+          <!-- <span>Hospital, Inc.</span> -->
+        </div>
+      </a>
+
+      <button class="menu-toggle" id="menuToggle" aria-expanded="false" aria-controls="primaryNav" aria-label="Toggle navigation">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16" /></svg>
+      </button>
+
+      <nav class="nav-links" id="primaryNav">
+        <a href="index.html#home" class="active">Home</a>
+        <a href="index.html#about">About Us</a>
+        <a href="index.html#services">Services</a>
+        <a href="index.html#faqs">FAQs</a>
+        <a href="hmo.html">HMO</a>
+        <a href="doctors.html">Doctor's Directory</a>
+        <a href="contact.html">Contact Us</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="home">
+    <section class="hero">
+      <div class="container hero-grid">
+        <div class="hero-copy">
+          <div class="kicker">Quality Patient Experience</div>
+          <h1 class="hero-title">We Serve.<span>We Care.</span></h1>
+          <p class="hero-sub">Serving the Tayabas community with compassionate, professional, and patient-centered healthcare.</p>
+
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="contact.html">Contact Us</a>
+            <a class="btn btn-secondary" href="#services">View Services</a>
+          </div>
+
+          <div class="hero-stats">
+            <div class="stat"><strong>1976</strong><span>Operating since June 1</span></div>
+            <div class="stat"><strong>24/7</strong><span>Community support mindset</span></div>
+            <div class="stat"><strong>Brgy. Wakas</strong><span>Tayabas City location</span></div>
+          </div>
+        </div>
+
+        <div class="hero-media">
+          <img src="assets/Hero.png" alt="Tayabas Community Hospital exterior" />
+        </div>
+      </div>
+    </section>
+
+    <section class="section alt" id="about">
+      <div class="container">
+        <div class="section-head center">
+          <div class="kicker">About Us</div>
+          <h2>Service, compassion, and commitment</h2>
+          <!-- <p>Principles that define us and our approach to healthcare.</p> -->
+        </div>
+
+        <div class="about-features">
+          <article class="feature-card">
+            <div class="feature-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 21s-7-4.35-7-10a4 4 0 0 1 7-2.65A4 4 0 0 1 19 11c0 5.65-7 10-7 10Z"/></svg>
+            </div>
+            <h3>Vision</h3>
+            <p>Committed to total quality healthcare through effective and efficient service for the community.</p>
+          </article>
+
+          <article class="feature-card">
+            <div class="feature-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 3l7 4v5c0 5-3.4 7.9-7 9-3.6-1.1-7-4-7-9V7l7-4Z"/><path d="m9.5 12 1.7 1.7L15 9.8"/></svg>
+            </div>
+            <h3>Mission</h3>
+            <p>Serving and caring for the sick with competence, compassion, and a strong sense of commitment.</p>
+          </article>
+
+          <article class="feature-card">
+            <div class="feature-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 3v18"/><path d="M3 12h18"/><path d="m5.5 5.5 13 13"/><path d="m18.5 5.5-13 13"/></svg>
+            </div>
+            <h3>Core Values</h3>
+            <p>Built on teamwork, compassion, human dignity, and integrity in everyday patient care.</p>
+          </article>
+        </div>
+
+        <div class="about-story">
+          <div class="about-text">
+            <div class="about-mini-title">Our Story</div>
+            <p>
+              The Tayabas Community Hospital, Inc. was founded in May 1974 and began operations on June 1, 1976. It is governed by the Board of Directors, with Dr. Avelino Aguerra Obispo serving as Chairman and Medical Director.
+            </p>
+            <p>
+              The hospital is located in Brgy. Wakas, Tayabas, Quezon. It was established by Dr. Avelino A. Obispo and originally consisted of a main building, which was later followed by a three-storey Annex Building.
+            </p>
+            <div class="about-values">
+              <span class="value-pill">Teamwork</span>
+              <span class="value-pill">Compassion</span>
+              <span class="value-pill">Human Dignity</span>
+              <span class="value-pill">Integrity</span>
+            </div>
+          </div>
+
+          <div class="about-image">
+            <img src="assets/aboutus.png" alt="Hospital exterior" />
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="services">
+      <div class="container">
+        <div class="section-row">
+          <div class="section-head services-intro">
+            <h2>Our Services</h2>
+            <p>Comprehensive healthcare solutions</p>
+          </div>
+          <a class="btn btn-secondary" href="#services">
+            View All Services
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M5 12h14"/>
+              <path d="m12 5 7 7-7 7"/>
+            </svg>
+          </a>
+        </div>
+
+        <div class="services-grid">
+          <article class="service-card">
+            <img src="https://images.pexels.com/photos/7089629/pexels-photo-7089629.jpeg?auto=compress&cs=tinysrgb&w=1200" alt="Laboratory services" />
+            <h3>Laboratory</h3>
+          </article>
+
+          <article class="service-card">
+            <img src="https://images.pexels.com/photos/305568/pexels-photo-305568.jpeg?auto=compress&cs=tinysrgb&w=1200" alt="Diagnostic imaging" />
+            <h3>Diagnostic Imaging</h3>
+          </article>
+
+          <article class="service-card">
+            <img src="https://images.pexels.com/photos/356040/pexels-photo-356040.jpeg?auto=compress&cs=tinysrgb&w=1200" alt="Pharmacy services" />
+            <h3>Pharmacy</h3>
+          </article>
+
+          <article class="service-card">
+            <img src="https://images.pexels.com/photos/263402/pexels-photo-263402.jpeg?auto=compress&cs=tinysrgb&w=1200" alt="Hemodialysis care" />
+            <h3>Hemodialysis</h3>
+          </article>
+        </div>
+
+        <div class="services-extra-grid">
+          <article class="service-pill-card">
+            <h3>CT Scan</h3>
+          </article>
+
+          <article class="service-pill-card">
+            <h3>Outpatient Consultation</h3>
+          </article>
+
+          <article class="service-pill-card">
+            <h3>Wound Care</h3>
+          </article>
+
+          <article class="service-pill-card">
+            <h3>Diabetes Care</h3>
+          </article>
+        </div>
+
+        <article class="heart-station-card">
+          <div class="heart-station-copy">
+            <span class="heart-station-label">Heart Station</span>
+            <h3>Specialized cardiac diagnostics</h3>
+            <p>Available procedures</p>
+          </div>
+
+          <ul class="heart-station-list">
+            <li>Stress Test</li>
+            <li>ECG</li>
+            <li>2D Echo</li>
+            <li>Venous Duplex Scan</li>
+          </ul>
+        </article>
+      </div>
+    </section>
+
+    <section class="banner">
+      <div class="container banner-inner">
+        <h2>Ready to Experience Better Healthcare?</h2>
+        <p>Schedule your appointment today and let us take care of your health needs.</p>
+        <div class="hero-actions">
+          <a class="btn btn-secondary" href="contact.html">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>
+            Book Appointment
+          </a>
+          <a class="btn btn-secondary light" href="tel:+63427932216">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.79 19.79 0 0 1 2.11 4.18 2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.12.89.33 1.76.62 2.6a2 2 0 0 1-.45 2.11L8 9.91a16 16 0 0 0 6.09 6.09l1.48-1.28a2 2 0 0 1 2.11-.45c.84.29 1.71.5 2.6.62A2 2 0 0 1 22 16.92z"/></svg>
+            Call Us Now
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section alt" id="news">
+      <div class="container">
+        <div class="section-head">
+          <div class="kicker">What's New</div>
+          <h2>Hospital updates</h2>
+          <p>Stay informed with the latest news, announcements, and hospital developments.</p>
+        </div>
+
+        <div class="grid-3">
+          <article class="news-card">
+            <div class="thumb">
+              <img src="https://images.pexels.com/photos/8460157/pexels-photo-8460157.jpeg?auto=compress&cs=tinysrgb&w=1200" alt="Advisories" />
+              <div class="thumb-label">Advisories</div>
+            </div>
+            <div class="body">
+              <h3>Important announcements</h3>
+              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla nibh orci, pretium tempor elit sit amet, tincidunt rutrum lorem.</p>
+            </div>
+          </article>
+
+          <article class="news-card">
+            <div class="thumb">
+              <img src="https://images.pexels.com/photos/6823569/pexels-photo-6823569.jpeg?auto=compress&cs=tinysrgb&w=1200" alt="Featured service" />
+              <div class="thumb-label">Featured Service</div>
+            </div>
+            <div class="body">
+              <h3>Highlighted care offerings</h3>
+              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla nibh orci, pretium tempor elit sit amet, tincidunt rutrum lorem.</p>
+            </div>
+          </article>
+
+          <article class="news-card">
+            <div class="thumb">
+              <img src="https://images.pexels.com/photos/6129119/pexels-photo-6129119.jpeg?auto=compress&cs=tinysrgb&w=1200" alt="Promos and Packages" />
+              <div class="thumb-label">Promos and Packages</div>
+            </div>
+            <div class="body">
+              <h3>Future health packages</h3>
+              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla nibh orci, pretium tempor elit sit amet, tincidunt rutrum lorem.</p>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="activities">
+      <div class="container">
+        <div class="section-head">
+          <div class="kicker">Activities & Events</div>
+          <h2>Community highlights</h2>
+          <p>Celebrating the programs, people, and moments that bring our hospital and community together.</p>
+        </div>
+
+        <div class="grid-3">
+          <article class="event-card">
+            <div class="thumb">
+              <img src="assets/anniv.jpg" alt="Founding anniversary event" />
+              <div class="thumb-label">TCHI Celebrates 47th Founding Anniversary</div>
+            </div>
+            <div class="body">
+              <h3>Founding anniversary</h3>
+              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+            </div>
+          </article>
+
+          <article class="event-card">
+            <div class="thumb">
+              <img src="https://images.pexels.com/photos/5998472/pexels-photo-5998472.jpeg?auto=compress&cs=tinysrgb&w=1200" alt="Admin department event" />
+              <div class="thumb-label">Admin Department is the Champ!</div>
+            </div>
+            <div class="body">
+              <h3>Department recognition</h3>
+              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+            </div>
+          </article>
+
+          <article class="event-card">
+            <div class="thumb">
+              <img src="https://images.pexels.com/photos/7088524/pexels-photo-7088524.jpeg?auto=compress&cs=tinysrgb&w=1200" alt="Kamustahan event" />
+              <div class="thumb-label">Employees Joins 2022 Kamustahan</div>
+            </div>
+            <div class="body">
+              <h3>Community gathering</h3>
+              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section alt" id="faqs">
+      <div class="container">
+        <div class="section-head center">
+          <div class="kicker">FAQs</div>
+          <h2>Quick answers for visitors</h2>
+          <p>Find important information about Tayabas Community Hospital’s services, appointments, and patient care.</p>
+        </div>
+
+        <div class="faq-wrap">
+          <article class="faq-item active">
+            <button class="faq-button" type="button"><span>When is the visiting hours?</span><span class="faq-icon">+</span></button>
+            <div class="faq-answer" style="max-height:180px;"><div class="faq-answer-inner"><p>Visiting hours starts from 8:00 am until 8:00 pm only.</p></div></div>
+          </article>
+
+          <article class="faq-item">
+            <button class="faq-button" type="button"><span>Do you accept credit card?</span><span class="faq-icon">+</span></button>
+            <div class="faq-answer"><div class="faq-answer-inner"><p>Please confirm the latest payment method details directly with the hospital before visiting.</p></div></div>
+          </article>
+
+          <article class="faq-item">
+            <button class="faq-button" type="button"><span>Are children below 8 years old allowed to visit a patient?</span><span class="faq-icon">+</span></button>
+            <div class="faq-answer"><div class="faq-answer-inner"><p>Please confirm current visitor restrictions and safety protocols with the hospital before planning a visit.</p></div></div>
+          </article>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <img src="assets/logo.png" alt="Tayabas Community Hospital logo" />
+          <div>
+            <strong>Tayabas Community Hospital, Inc.</strong>
+            <p>Dedicated to serving the community through accessible health care, compassionate support, and a patient-centered online experience.</p>
+          </div>
+        </div>
+        <div>
+          <h3>Quick Links</h3>
+          <ul>
+            <li><a href="index.html#about">About Us</a></li>
+            <li><a href="index.html#services">Services</a></li>
+            <li><a href="doctors.html">Doctor's Directory</a></li>
+            <li><a href="contact.html">Contact Us</a></li>
+          </ul>
+        </div>
+        <div>
+          <h3>Contact</h3>
+          <ul>
+            <li>Brgy. Wakas, Tayabas, Quezon</li>
+            <li>(042) 793-2216</li>
+            <li>administrative@tayabascommunityhospital.com</li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">© 2026 Tayabas Community Hospital, Inc. All rights reserved.</div>
+    </div>
+  </footer>
+
+  <script>
+    document.querySelectorAll('.faq-item').forEach(item => {
+      const button = item.querySelector('.faq-button');
+      const answer = item.querySelector('.faq-answer');
+      button.addEventListener('click', () => {
+        const open = item.classList.contains('active');
+        document.querySelectorAll('.faq-item').forEach(other => {
+          other.classList.remove('active');
+          other.querySelector('.faq-answer').style.maxHeight = '0px';
+        });
+        if (!open) {
+          item.classList.add('active');
+          answer.style.maxHeight = answer.scrollHeight + 'px';
+        }
+      });
+    });
+
+    const menuToggle = document.getElementById('menuToggle');
+    const primaryNav = document.getElementById('primaryNav');
+    menuToggle?.addEventListener('click', () => {
+      const isOpen = primaryNav.classList.toggle('open');
+      menuToggle.setAttribute('aria-expanded', String(isOpen));
+    });
+    primaryNav?.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => {
+        primaryNav.classList.remove('open');
+        menuToggle?.setAttribute('aria-expanded', 'false');
+      });
+    });
+  </script>
+</body>
+</html>
